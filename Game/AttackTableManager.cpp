@@ -5,14 +5,14 @@
 AttackTableManager* AttackTableManager::mAtkManagerInstance = nullptr;
 AttackTableManager::AttackTableManager()
 {
-	mAtkManagerInstance = this;
+	mAtkManagerInstance		= this;
 	mAttackList.clear();
-	mType = ATTACK_TYPE::NONE;
-	mIsTrg = false;
-	mIsChange = false;
-	mAttackCnt = 0;
-	mCountMax = 0;
-	mTable = new AttackTable();
+	mType					= ATTACK_TYPE::NONE;
+	mIsTrg					= false;
+	mIsChange				= false;
+	mAttackCnt				= 0;
+	mCountMax				= 0;
+	mTable					= new AttackTable();
 }
 
 AttackTableManager::~AttackTableManager()
@@ -42,16 +42,20 @@ void AttackTableManager::LoadAttackData(const std::string& filename, ATTACK_TYPE
 			int istrg = 0;
 			int ischange = 0;
 			int iscol = 0;
+			int isse = 0;
+			int isvoice = 0;
 			//ファイルの上から','、空白、コントロールコードを無視しながら要素を取得
 			c += GetDecNum(&p[c], &id);
 			c += FindString(&p[c], ',', &p[size]); c++; c += GetDecNum(&p[c], &istrg);
 			c += FindString(&p[c], ',', &p[size]); c++; c += GetDecNum(&p[c], &ischange);
 			c += FindString(&p[c], ',', &p[size]); c++; c += GetDecNum(&p[c], &iscol);
+			c += FindString(&p[c], ',', &p[size]); c++; c += GetDecNum(&p[c], &isse);
+			c += FindString(&p[c], ',', &p[size]); c++; c += GetDecNum(&p[c], &isvoice);
 			c += SkipSpace(&p[c], &p[size]);
 			//モーションテーブルのアイテム初期化
-			AttackTableItem stand = { id, static_cast<bool>(istrg), static_cast<bool>(ischange), static_cast<bool>(iscol) };
+			AttackTableItem item = { id, static_cast<bool>(istrg), static_cast<bool>(ischange), static_cast<bool>(iscol),static_cast<bool>(isse),static_cast<bool>(isvoice) };
 			//アイテムをテーブルに追加
-			table->AddItem(stand);
+			table->AddItem(item);
 		}
 		table->SetVoiceName(voicename);
 		table->SetSeName(sename);

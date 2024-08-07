@@ -6,13 +6,15 @@
 class AttackTableItem
 {
 public:
-	AttackTableItem(int, bool, bool, bool);
+	AttackTableItem(int, bool, bool, bool, bool, bool);
 	~AttackTableItem();
 	//ゲッター
 	int		GetAttackID()		const	{ return mAttackID; }
 	bool	GetIsTrg()			const	{ return mIsTrgButton; }
 	bool	GetIsChangeAttack() const	{ return mIsChangeAttack; }
 	bool	GetIsColAttack()	const	{ return mIsColAttack; }
+	bool	GetIsPlaySE()		const	{ return mIsPlaySE; }
+	bool	GetIsPlayVoice()	const	{ return mIsPlayVoice; }
 protected:
 	//攻撃用ID
 	int mAttackID;
@@ -22,6 +24,8 @@ protected:
 	bool mIsChangeAttack;
 	//攻撃判定可能か
 	bool mIsColAttack;
+	bool mIsPlaySE;
+	bool mIsPlayVoice;
 };
 
 //攻撃に関するデータテーブル

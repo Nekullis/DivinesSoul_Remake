@@ -6,12 +6,12 @@
 MotionTableManager* MotionTableManager::mMotTableInstance = nullptr;
 MotionTableManager::MotionTableManager()
 {
-	mMotTableInstance = this;
-	mMotionCnt = 0;
-	mCountMax = 0;
-	mTable = new MotionTable;
-	mMotion = CHARACTER_MOTION::PLAYER_STAND;
-	mLayer = MOTION_LAYER::ALWAYS;
+	mMotTableInstance	= this;
+	mMotionCnt			= 0;
+	mCountMax			= 0;
+	mTable				= new MotionTable;
+	mMotion				= CHARACTER_MOTION::PLAYER_STAND;
+	mLayer				= MOTION_LAYER::ALWAYS;
 }
 
 MotionTableManager::~MotionTableManager()
