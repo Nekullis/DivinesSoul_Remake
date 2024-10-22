@@ -9,7 +9,7 @@ Divine::Divine()
 	SKILL skill[8] =
 	{//	スキル名, 位置, 当たり判定用サイズ, 再発動フレーム, 再発動までのカウント, 判定用カウント, 発動フラグ, 発動中か, 総合発動時間, 判定開始時間, エフェクト初期化
 		{SKILLNAME::BREATH,	  VGet(0,0,0),   0.0f, 320, 0, 0,  30, true, false, 150.0f, 12.0f,  50.0f, new Effect("res/effekseer/bless/bless.efkefc",			   100.0f), "SE_Breath"},
-		{SKILLNAME::CIRCLE,	  VGet(0,0,0), 150.0f, 550, 0, 0,   5, true, false, 500.0f, 27.0f, 400.0f, new Effect("res/effekseer/circle/circle.efkefc",				30.0f), "SE_Circle"},
+		{SKILLNAME::CIRCLE,	  VGet(0,0,0), 150.0f, 550, 0, 0,   5, true, false, 500.0f, 24.0f, 450.0f, new Effect("res/effekseer/circle/circle.efkefc",				30.0f), "SE_Circle"},
 		{SKILLNAME::LASER,	  VGet(0,0,0), 200.0f, 400, 0, 0,   5, true, false, 240.0f, 27.0f, 70.0f,  new Effect("res/effekseer/laser/Laser.efkefc",				30.0f), "SE_Laser"},
 		{SKILLNAME::SLASH,	  VGet(0,0,0), 300.0f, 300, 0, 0,  30, true, false,  96.0f, 12.0f,  30.0f, new Effect("res/effekseer/slash/slash2.efkefc",				80.0f), "SE_Slash"},
 		{SKILLNAME::EXPLOSION,VGet(0,0,0), 480.0f, 400, 0, 0, 100, true, false, 150.0f, 10.0f,  15.0f, new Effect("res/effekseer/explosion/explosion_new3.efkefc",	50.0f), "SE_Explosion"},

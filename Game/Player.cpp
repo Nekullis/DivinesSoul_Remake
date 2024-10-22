@@ -105,7 +105,8 @@ void Player::SetJsonTransform()
 	}
 }
 
-void Player::Initialize(int handle, int weapon) {
+void Player::Initialize(int handle, int weapon)
+{
 	// モデルデータのロード（テクスチャも読み込まれる）	
 	mModel = handle;
 	mDashModel = MV1LoadModel("res/Model/Character/Player/A_DashAttack.mv1");

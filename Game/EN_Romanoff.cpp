@@ -517,10 +517,6 @@ bool EN_Romanoff::Render()
 	MV1SetAttachAnimTime(mModel, mAttachIndex, mPlayTime);
 	MV1DrawModel(mModel);
 	MV1DrawModel(mWeaponModel);
-	if (mIsAttack)
-	{
-		DrawCapsule3D(mWeaponPos[0], mWeaponPos[1], 50, 5, GetColor(0, 255, 255), GetColor(0, 255, 255), FALSE);
-	}
 	return true;
 }
 

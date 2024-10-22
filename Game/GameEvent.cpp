@@ -203,7 +203,7 @@ void GameEvent::EnemyWaveInit(int i)
 		"Enemy_Wave3",
 		"Enemy_Wave4",
 		"Enemy_Wave5",
-		"Enemy_Wave8",
+		"Enemy_Wave6"
 	};
 	//ˆÊ’u
 	VECTOR pos = VGet(0, 0, 0);
