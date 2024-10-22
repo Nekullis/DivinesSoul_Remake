@@ -21,7 +21,6 @@ public:
 	bool DivineColProcess	(Player* pl, EnemyManager* _enemy);
 	//マップ押し出し処理
 	bool MapColPlayer		(Player* pl);
-	bool MapColEnemy		(EnemyManager* _enemy);
 	//playerとenemyの押し出し、攻撃判定処理
 	bool PtoEColProcess		(Player* pl, EnemyManager* _enemy);
 	//enemy同士の押し出し処理

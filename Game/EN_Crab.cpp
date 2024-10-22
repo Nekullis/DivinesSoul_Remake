@@ -140,12 +140,7 @@ bool EN_Crab::C_Process(VECTOR pl_pos)
 		Delete();
 		break;
 	}
-	if (mNoDamage) { mInvincibleCnt++; }
-	if (mInvincibleCnt >= mNextFrame)
-	{
-		mNoDamage = false;
-		mInvincibleCnt = 0;
-	}
+
 	//埋まらないように位置を調整
 	if (mPos.y <= 0 || mPos.y >= 0)
 	{
@@ -177,8 +172,11 @@ bool EN_Crab::C_Process(VECTOR pl_pos)
 }
 bool EN_Crab::Damage(VECTOR pl_pos, int subpoint, int nextframe)
 {
+	//se設定
 	SoundItemBase* snditem_se = gGlobal.mSndServer.Get("SE_Damage");
+	//音量設定
 	snditem_se->SetVolume(200);
+	//読み込んでいるか
 	if (snditem_se && snditem_se->IsLoad())
 	{
 		// 再生中か？
@@ -188,41 +186,31 @@ bool EN_Crab::Damage(VECTOR pl_pos, int subpoint, int nextframe)
 			snditem_se->Play();
 		}
 	}
+	//プレイヤーとの位置の差を求める
 	VECTOR v = VSub(mPos, pl_pos);
+	//体力を反映
 	mHp = mHp - subpoint;
+	//体力が0以下
 	if (mHp <= 0)
 	{
 		v = VScale(VNorm(v), 100);
 		//ステータスを死亡に
 		ChangeStatus(STATUS::DIE);
 	}
+	//体力が0以上
 	else if (mHp > 0)
 	{
+		//押し戻す長さを取得
 		v = VScale(VNorm(v), 200);
 	}
+	//位置に反映
 	mPos = VAdd(mPos, v);
-	mNextFrame = nextframe;
 	return true;
 }
 
 bool EN_Crab::Suction(VECTOR pl_pos, int nextframe)
 {
-	SoundItemBase* snditem_se = gGlobal.mSndServer.Get("SE_Damage");
-	if (snditem_se && snditem_se->IsLoad())
-	{
-		// 再生中か？
-		if (snditem_se->IsPlay() == false)
-		{
-			// 再生する
-			snditem_se->Play();
-		}
-	}
-
-	VECTOR v = VSub(mPos, pl_pos);
-	v = VScale(VNorm(v), -5);
-	mPos = VAdd(mPos, v);
-	mNextFrame = nextframe;
-	mNoDamage = true;
+	base::Suction(pl_pos, nextframe);
 	return true;
 }
 

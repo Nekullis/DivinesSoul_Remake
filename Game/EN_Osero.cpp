@@ -146,7 +146,6 @@ bool EN_Osero::A_Process()
 			}
 		}
 		else { mPlayTime = 0; }
-		//_playTime = 0;
 	}
 	//一時的なステータスの変更
 	mOldStatus = mStatus;
@@ -289,13 +288,13 @@ void EN_Osero::SetWeapon()
 
 void EN_Osero::Invincible(int nextframe)
 {
-	//無敵時間中のみカウントを増やす
-	if (mNoDamage) { mInvincibleCnt++; }
-	if (mInvincibleCnt >= mNextFrame)
-	{
-		mNoDamage = false;
-		mInvincibleCnt = 0;
-	}
+	////無敵時間中のみカウントを増やす
+	//if (mNoDamage) { mInvincibleCnt++; }
+	//if (mInvincibleCnt >= mNextFrame)
+	//{
+	//	mNoDamage = false;
+	//	mInvincibleCnt = 0;
+	//}
 }
 VECTOR EN_Osero::AttackPos()
 {
@@ -354,12 +353,14 @@ bool EN_Osero::C_Process(VECTOR pl_pos)
 	MV1SetRotationXYZ(mModel, VGet(0,angle,0));
 	return true;
 }
+
 bool EN_Osero::Process(VECTOR pl_pos)
 {
 	A_Process();
 	C_Process(pl_pos);
 	return true;
 }
+
 bool EN_Osero::Damage(VECTOR pl_pos,int subpoint, int nextframe)
 {
 	SoundItemBase* snditem_se = gGlobal.mSndServer.Get("SE_Damage");
@@ -387,29 +388,14 @@ bool EN_Osero::Damage(VECTOR pl_pos,int subpoint, int nextframe)
 		ChangeStatus(STATUS::DAMAGE);
 	}
 	mPos = VAdd(mPos, v);
-	mNextFrame = nextframe;
-	mNoDamage = true;
+	/*mNextFrame = nextframe;
+	mNoDamage = true;*/
 	return true;
 }
 
 bool EN_Osero::Suction(VECTOR pl_pos, int nextframe)
 {
-	SoundItemBase* snditem_se = gGlobal.mSndServer.Get("SE_Damage");
-	if (snditem_se && snditem_se->IsLoad())
-	{
-		// 再生中か？
-		if (snditem_se->IsPlay() == false)
-		{
-			// 再生する
-			snditem_se->Play();
-		}
-	}
-	ChangeStatus(STATUS::DAMAGE);
-	VECTOR v = VSub(mPos, pl_pos);
-	v = VScale(VNorm(v), -5);
-	mPos = VAdd(mPos, v);
-	mNextFrame = nextframe;
-	mNoDamage = true;
+	Enemy::Suction(pl_pos,nextframe);
 	return true;
 }
 

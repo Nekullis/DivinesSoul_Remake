@@ -57,62 +57,10 @@ bool ActionCollision::MapColPlayer(Player* pl)
 	return true;
 }
 
-bool ActionCollision::MapColEnemy(EnemyManager* _enemy)
-{
-	std::list<Enemy*> list = _enemy->GetEnemyList();
-	for (auto&& enemy : list)
-	{
-		float radius = enemy->GetRadius();
-		//エネミーの判定カプセル
-		VECTOR vcap_enemy[2] =
-		{	//[0]が頭部分、[1]が足元部分
-			{ VAdd(enemy->GetPos(), VGet(0.0f, enemy->GetSeg(), 0.0f))},
-			{ VAdd(enemy->GetPos(), VGet(0.0f, enemy->GetRadius(), 0.0f))},
-		};
-		for (int i = 0; i < 17; i++)
-		{
-			MV1_COLL_RESULT_POLY_DIM hit_poly_chara;
-			hit_poly_chara = MV1CollCheck_Capsule(mStageModel, i, vcap_enemy[0], vcap_enemy[1], radius);
-			if (hit_poly_chara.HitNum >= 1)
-			{
-				const int hit_num = hit_poly_chara.HitNum;
-				int j = 0;
-				// 当たったポリゴンの数だけ繰り返し
-				for (j = 0; j < hit_num; j++)
-				{
-					//線分と三角形の最近点二つもらう
-					tagSEGMENT_TRIANGLE_RESULT result;
-					Segment_Triangle_Analyse(&vcap_enemy[0], &vcap_enemy[1], &hit_poly_chara.Dim[j].Position[0], &hit_poly_chara.Dim[j].Position[1], &hit_poly_chara.Dim[j].Position[2], &result);
-					//ベクトルの引き算で押し出す角度を取る
-					VECTOR sub_dir = VSub(result.Seg_MinDist_Pos, result.Tri_MinDist_Pos);
-					//線分と三角形の最近点間
-					float near_point = Segment_Triangle_MinLength(vcap_enemy[0], vcap_enemy[1], hit_poly_chara.Dim[j].Position[0], hit_poly_chara.Dim[j].Position[1], hit_poly_chara.Dim[j].Position[2]);
-					//プレイヤーの押しだす距離
-					float sub_len = radius - near_point;
-					//法線方向に上で求めた距離を掛ける
-					VECTOR push_vec = VScale(VNorm(sub_dir), sub_len);
-					if (VSize(enemy->GetPos()) != VSize(VAdd(enemy->GetPos(), push_vec)))
-					{
-
-					}
-					if (i != 6)
-					{
-						enemy->SetPos(VAdd(enemy->GetPos(), VGet(push_vec.x, 0, push_vec.z)));
-					}
-				}
-			}
-			MV1CollResultPolyDimTerminate(hit_poly_chara);
-		}
-	}
-	
-	return true;
-}
-
 bool ActionCollision::MapColProcess(Player* pl, EnemyManager* _enemy)
 {
 	
 	MapColPlayer(pl);
-	//MapColEnemy(_enemy);
 	return true;
 }
 
@@ -122,7 +70,7 @@ bool ActionCollision::PtoEColProcess(Player* pl, EnemyManager* _enemy)
 	float distCaptoCap = 0.f;
 	float distCaptoWeapon = 0.f;
 	float weapon_rad = 50.f;
-	int frame = 0.f;
+	int frame = 0;
 	int cnt = pl->GetAttackManager()->GetAttackCount();
 	int max = pl->GetAttackManager()->GetMaxCount();
 	int old_attack_id = -1;
@@ -190,7 +138,6 @@ bool ActionCollision::PtoEColProcess(Player* pl, EnemyManager* _enemy)
 					enemy->Damage(pl->GetPos(), pl->GetAtk(), 10);
 					old_attack_id = mAttackID;
 				}
-				
 			}
 		}
 		else

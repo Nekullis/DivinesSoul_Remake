@@ -65,12 +65,27 @@ bool Enemy::Delete()
 
 bool Enemy::Damage(VECTOR pl_pos, int subpoint,int nextframe)
 {
-	
 	return true;
 }
 
 bool Enemy::Suction(VECTOR pl_pos, int nextframe)
 {
+	SoundItemBase* snditem_se = gGlobal.mSndServer.Get("SE_Damage");
+	if (snditem_se && snditem_se->IsLoad())
+	{
+		// Ä¶’†‚©H
+		if (snditem_se->IsPlay() == false)
+		{
+			// Ä¶‚·‚é
+			snditem_se->Play();
+		}
+	}
+	ChangeStatus(STATUS::DAMAGE);
+	VECTOR v = VSub(mPos, pl_pos);
+	v = VScale(VNorm(v), -5);
+	mPos = VAdd(mPos, v);
+	mNextFrame = nextframe;
+	mNoDamage = true;
 	return true;
 }
 
