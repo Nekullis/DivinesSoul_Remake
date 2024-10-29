@@ -13,7 +13,6 @@ Divine::Divine()
 		{SKILLNAME::LASER,	  VGet(0,0,0), 200.0f, 400, 0, 0,   5, true, false, 240.0f, 27.0f, 70.0f,  new Effect("res/effekseer/laser/Laser.efkefc",				30.0f), "SE_Laser"},
 		{SKILLNAME::SLASH,	  VGet(0,0,0), 300.0f, 300, 0, 0,  30, true, false,  96.0f, 12.0f,  30.0f, new Effect("res/effekseer/slash/slash2.efkefc",				80.0f), "SE_Slash"},
 		{SKILLNAME::EXPLOSION,VGet(0,0,0), 480.0f, 400, 0, 0, 100, true, false, 150.0f, 10.0f,  15.0f, new Effect("res/effekseer/explosion/explosion_new3.efkefc",	50.0f), "SE_Explosion"},
-		//{SKILLNAME::LOCKON,	   	VGet(0,0,0),   0.0f, 480, 0, 0,  40, true, false, 150.0f,  0.0f,   0.0f, new Effect("res/effekseer/lockon/lockon.efkefc", 15.0f),	"SE_Lockon"},
 		{SKILLNAME::DASH,	  VGet(0,0,0), 100.0f, 180, 0, 0,  10, true, false,  60.0f, 15.0f,  60.0f, new Effect("res/effekseer/dash/dash.efkefc",					50.0f), "SE_DashAttack"},
 		{SKILLNAME::VACUUM,	  VGet(0,0,0),   0.0f, 600, 0, 0,   0, true, false, 350.0f, 30.0f, 120.0f, new Effect("res/effekseer/vacuum/vacuum.efkefc",				50.0f), "SE_Vacuum"},
 		{SKILLNAME::SONIC,	  VGet(0,0,0), 400.0f, 240, 0, 0,  20, true, false,  75.0f,  5.0f,  50.0f, new Effect("res/effekseer/sonicwave/sonicwave.efkefc",		50.0f), "SE_Sonic"}
@@ -68,7 +67,6 @@ bool Divine::Calcalate(VECTOR pos, float roty)
 		VGet(0,100,400 - (24 * mSkill[2].colCnt)),
 		VGet(0,0,0),
 		VGet(0,100,-630),
-		//VGet(0,0,0),
 		VGet(0,0,0),
 		VGet(0,100,-50),
 		VGet(0,0,0)
@@ -98,7 +96,6 @@ bool Divine::Process(VECTOR pos, float roty)
 		VGet(0,100,-200),
 		VGet(0,0,0),
 		VGet(0,0,-630),
-		//VGet(0,0,0),
 		VGet(0,100,-100),
 		VGet(0,100,-50),
 		VGet(0,0,0)
