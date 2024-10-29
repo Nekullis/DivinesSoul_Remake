@@ -57,7 +57,6 @@ Player::Player()
 	mMotionManager->LoadTable("res/csv/player/Motion/Motion_Table_SECONDATTACK.csv",CHARACTER_MOTION::PLAYER_SECONDATTACK,	MotionTable::MOTION_ENDTYPE::END,	MOTION_LAYER::TRIGGER);
 	mMotionManager->LoadTable("res/csv/player/Motion/Motion_Table_LASTATTACK.csv",	CHARACTER_MOTION::PLAYER_LASTATTACK,	MotionTable::MOTION_ENDTYPE::END,	MOTION_LAYER::TRIGGER);
 	mMotionManager->LoadTable("res/csv/player/Motion/Motion_Table_DASHATTACK.csv",	CHARACTER_MOTION::PLAYER_DASHATTACK,	MotionTable::MOTION_ENDTYPE::END,	MOTION_LAYER::TRIGGER);
-	//mMotionManager->LoadTable("res/csv/player/Motion/Motion_Table_DASHATTACK_test.csv", CHARACTER_MOTION::PLAYER_DASHATTACK, MotionTable::MOTION_ENDTYPE::END,	MOTION_LAYER::TRIGGER);
 	mMotionManager->LoadTable("res/csv/player/Motion/Motion_Table_SKILL.csv",		CHARACTER_MOTION::PLAYER_SKILL,			MotionTable::MOTION_ENDTYPE::END,	MOTION_LAYER::TRIGGER);
 	mMotionManager->LoadTable("res/csv/player/Motion/Motion_Table_SKILLDASH.csv",	CHARACTER_MOTION::PLAYER_SKILLDASH,		MotionTable::MOTION_ENDTYPE::LOOP,	MOTION_LAYER::TRIGGER);
 	mMotionManager->LoadTable("res/csv/player/Motion/Motion_Table_DAMAGE.csv",		CHARACTER_MOTION::PLAYER_DAMAGE,		MotionTable::MOTION_ENDTYPE::END,	MOTION_LAYER::DAMAGE);
@@ -71,7 +70,6 @@ Player::Player()
 	mAttackManager->LoadAttackData("res/csv/player/AttackData/Attack_Data_SCONDATTACK.csv",		ATTACK_TYPE::SCOND_ATTACK,  "VO_Fe_Attack02", "SE_Attack02");
 	mAttackManager->LoadAttackData("res/csv/player/AttackData/Attack_Data_THIRDATTACK.csv",		ATTACK_TYPE::THIRD_ATTACK,  "VO_Fe_Attack03", "SE_Attack03");
 	mAttackManager->LoadAttackData("res/csv/player/AttackData/Attack_Data_DASHATTACK.csv",		ATTACK_TYPE::DASH_ATTACK,	"VO_Fe_Attack03", "SE_Attack01");
-	//mAttackManager->LoadAttackData("res/csv/player/AttackData/Attack_Data_DASHATTACK_2.csv",	ATTACK_TYPE::DASH_ATTACK,	"VO_Fe_Attack01", "SE_Attack01");
 	mAttackManager->AttackChange(ATTACK_TYPE::NONE);
 }
 
@@ -505,25 +503,30 @@ void Player::ActionProcess(VECTOR campos, VECTOR camtarget, SkillSlot* slot)
 	//攻撃時の声とseを再生する
 	if (mAttackManager->GetType() != ATTACK_TYPE::NONE)
 	{
-		if (attack_cnt == 1)
+		if (mAttackManager->GetTable()->GetItem()[attack_cnt].GetIsPlaySE())
 		{
-			//モーションテーブルから再生用の声とseのキーを取得する
-			SoundItemBase* snditem_voice = gGlobal.mSndServer.Get(mAttackManager->GetTable()->GetVoiceName());
+			//モーションテーブルから再生用のseのキーを取得する
 			SoundItemBase* snditem_se = gGlobal.mSndServer.Get(mAttackManager->GetTable()->GetSeName());
 			//音量設定
-			snditem_voice->SetVolume(255);
 			snditem_se->SetVolume(255);
-			// 再生中でないなら
-			if (snditem_voice->IsPlay() == false)
-			{
-				// 再生する
-				snditem_voice->Play();
-			}
 			// 再生中でないなら
 			if (snditem_se->IsPlay() == false)
 			{
 				// 再生する
 				snditem_se->Play();
+			}
+		}
+		if (mAttackManager->GetTable()->GetItem()[attack_cnt].GetIsPlayVoice())
+		{
+			//モーションテーブルから再生用の声のキーを取得する
+			SoundItemBase* snditem_voice = gGlobal.mSndServer.Get(mAttackManager->GetTable()->GetVoiceName());
+			//音量設定
+			snditem_voice->SetVolume(255);
+			// 再生中でないなら
+			if (snditem_voice->IsPlay() == false)
+			{
+				// 再生する
+				snditem_voice->Play();
 			}
 		}
 	}
