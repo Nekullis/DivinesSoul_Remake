@@ -1,6 +1,5 @@
 #pragma once
 #include"ModeTitle.h"
-//#include "appframe.h"
 class ModeGameover : public ModeBase
 {
 	typedef ModeBase base;

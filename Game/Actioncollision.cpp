@@ -70,7 +70,7 @@ bool ActionCollision::PtoEColProcess(Player* pl, EnemyManager* _enemy)
 	float distCaptoCap = 0.f;
 	float distCaptoWeapon = 0.f;
 	float weapon_rad = 50.f;
-	int frame = 0;
+	int frame = 0.f;
 	int cnt = pl->GetAttackManager()->GetAttackCount();
 	int max = pl->GetAttackManager()->GetMaxCount();
 	int old_attack_id = -1;
@@ -138,6 +138,7 @@ bool ActionCollision::PtoEColProcess(Player* pl, EnemyManager* _enemy)
 					enemy->Damage(pl->GetPos(), pl->GetAtk(), 10);
 					old_attack_id = mAttackID;
 				}
+				
 			}
 		}
 		else
@@ -497,11 +498,4 @@ bool ActionCollision::Process(Player* pl, EnemyManager* _enemy)
 	DivineColProcess(pl, _enemy);
 	MapColProcess(pl, _enemy);
 	return true;
-}
-
-bool ActionCollision::Debug(Player* pl) 
-{
-	clsDx();
-	printfDx("%f",pl->GetDivine()->GetSkill(2).vPos.z);
-	return false;
 }

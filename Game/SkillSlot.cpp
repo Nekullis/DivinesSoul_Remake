@@ -119,6 +119,7 @@ void SkillSlot::Process()
 
 void SkillSlot::Render() 
 {
+	//ガチャ用アイコン描画
 	int cg[8] =
 	{
 		gGlobal.mGetGraph()["UI_slot_bleath"]._handle,

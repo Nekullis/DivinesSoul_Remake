@@ -55,18 +55,18 @@ public:
 	//ステータス変更
 	virtual void ChangeStatus(STATUS en_status);
 	//ゲッター
-	VECTOR	GetPos()			{ return mPos; }
-	VECTOR	GetDir()			{ return mDir; }
-	float	GetRadius()			{ return mRadius; }
-	float	GetSeg()			{ return mLineSeg; }
-	bool	GetAttackFlag()		{ return mIsAttack; }
-	VECTOR	GetWeaponPos(int i)	{ return mWeaponPos[i]; }
-	float	GetWeaponSize()		{ return mWeaponSize; }
-	bool	GetInvincible()		{ return mNoDamage; }
-	int		GetHp()				{ return mHp; }
-	int		GetATK()			{ return mAtk; }
-	bool	GetDeleteFlag()		{ return mDeleteFlag; }
-	ENEMYTYPE GetEnemyType()	{ return mType; }
+	VECTOR	GetPos()			const { return mPos; }
+	VECTOR	GetDir()			const { return mDir; }
+	float	GetRadius()			const { return mRadius; }
+	float	GetSeg()			const { return mLineSeg; }
+	bool	GetAttackFlag()		const { return mIsAttack; }
+	VECTOR	GetWeaponPos(int i) const { return mWeaponPos[i]; }
+	float	GetWeaponSize()		const { return mWeaponSize; }
+	bool	GetInvincible()		const { return mNoDamage; }
+	int		GetHp()				const { return mHp; }
+	int		GetATK()			const { return mAtk; }
+	bool	GetDeleteFlag()		const { return mDeleteFlag; }
+	ENEMYTYPE GetEnemyType()	const { return mType; }
 	//セッター
 	void  SetPos(VECTOR i)		{ mPos = VAdd(mPos, i); }
 	void  SetDir(VECTOR i)		{ mDir = i; }

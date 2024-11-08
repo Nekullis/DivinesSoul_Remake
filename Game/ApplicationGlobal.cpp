@@ -15,7 +15,6 @@ ApplicationGlobal::~ApplicationGlobal()
 	delete mRS;
 }
 
-
 bool ApplicationGlobal::Init() 
 {
 	mIsLoad = false;

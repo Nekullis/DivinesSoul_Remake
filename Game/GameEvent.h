@@ -58,8 +58,8 @@ public:
 	//ゲッター
 	static GameEvent*	GetInstance()			{ return _evInstance; }
 	EnemyManager*		GetEnemyManager()		{ return mEnManager; }
-	int					GetEvent()				{ return mStoryEv; }
-	int					GetDivineEvent()		{ return mDivineEv; }
+	int					GetEvent()		  const { return mStoryEv; }
+	int					GetDivineEvent()  const { return mDivineEv; }
 	//セッター
 	void				SetEvent(int i)			{ mStoryEv += i; }
 	void				SetDivineEvent(int i)	{ mDivineEv += i; }

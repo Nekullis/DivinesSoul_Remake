@@ -74,11 +74,14 @@ void GameUI::IntervalDraw(std::array<kindDivine, 3> slot)
 
 void GameUI::Draw(std::array<kindDivine, 3> slot)
 {
+	//HPバーフレーム描画
 	DrawGraph(0, 900, mUiPlHpBarFrame, TRUE);
+	//HPバー描画
 	for (int i = 0; i < gGlobal.mPM->P_GetHp(); i++)
 	{
 		DrawGraph(55 + i * 2.15, 915, mUiPlHp, TRUE);
 	}
+	//ボス体力描画
 	if (GameEvent::GetInstance()->GetEvent() >= 1)
 	{
 		for (int i = 0; i < EN_Romanoff::GetInstance()->GetHp(); i++)
@@ -87,6 +90,7 @@ void GameUI::Draw(std::array<kindDivine, 3> slot)
 		}
 		DrawGraph(450, 50, mUiEnHpBarFrame, TRUE);
 	}
+	//各UI描画
 	GameEvent::GetInstance()->DrawEventUI();
 	GameSystem::GetInstance()->DrawConbo();
 	//フレームの描画
@@ -99,6 +103,7 @@ void GameUI::Draw(std::array<kindDivine, 3> slot)
 	DrawGraph(1560, 890, mUiDIcon[slot[1]], TRUE);
 	DrawGraph(1650, 980, mUiDIcon[slot[2]], TRUE);
 	DrawGraph(1740, 890, mUiWeaponIcon[0], TRUE);
+	//アイコンの再使用時間の可視化
 	IntervalDraw(slot);
 	
 	

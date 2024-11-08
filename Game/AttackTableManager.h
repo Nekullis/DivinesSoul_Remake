@@ -30,8 +30,11 @@ protected:
 	std::map<int, AttackTable*> mAttackList;
 	//テーブル
 	AttackTable* mTable;
+	//タイプ
 	ATTACK_TYPE mType;
+	//トリガ入力中か
 	bool mIsTrg;
+	//変更できるか
 	bool mIsChange;
 	//モーションカウント
 	int mAttackCnt;

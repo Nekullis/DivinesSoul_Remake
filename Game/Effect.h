@@ -13,12 +13,11 @@ public:
 	bool Stop();
 	bool Process();
 	bool Draw();
-	bool Debug();
 	//何回も呼び出す必要のない関数なのでこの関数はマネージャーあるいはゲームメインに置くこと
 	bool Update();
 	//ゲッター
-	bool GetUseFlag()				{ return mUseFlag; }
-	bool GetPlayFlag()				{ return mPlayFlag; }
+	bool GetUseFlag()		  const { return mUseFlag; }
+	bool GetPlayFlag()		  const { return mPlayFlag; }
 	static Effect* GetInstance()	{ return efInstance; }
 	//セッター
 	void SetPos(VECTOR v)	{ mPos=v; }

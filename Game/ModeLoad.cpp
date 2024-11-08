@@ -18,12 +18,16 @@ bool ModeLoad::Terminate()
 bool ModeLoad::Process()
 {
 	base::Process();
+
+	//クランプ関数をラムダ式で作っておく
 	auto clamp0to2 = [](int& i)
 	{
 		if (i < 0) { i = 0; }
 		else if (i > 2) { i = 2; }
 	};
+
 	int old_change = _changePage;
+	//画像切り替え
 	if (gGlobal.gPad->GetXTrg(XINPUT_BUTTON_DPAD_RIGHT))
 	{
 		_changePage++;
@@ -32,12 +36,14 @@ bool ModeLoad::Process()
 	{
 		_changePage--;
 	}
+	//ページ数を超えないように
 	clamp0to2(_changePage);
 	if (old_change != _changePage)
 	{
 		SoundItemBase* sndse_page = gGlobal.mSndServer.Get("SE_Page");
 		sndse_page->Play();
 	}
+
 	if (gGlobal.gPad->GetXTrg(XINPUT_BUTTON_A))
 	{
 		SoundItemBase* sndse = gGlobal.mSndServer.Get("SE_UI_Decision");
@@ -52,6 +58,7 @@ bool ModeLoad::Process()
 
 bool ModeLoad::Render()
 {
+	//画像描画
 	base::Render();
 	int cg[3] =
 	{

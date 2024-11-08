@@ -53,10 +53,6 @@
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerManager.h" />
-    <ClInclude Include="PlayerParameter.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="ResourceServer.h" />
     <ClInclude Include="SkillSlot.h" />
     <ClInclude Include="SoundItem.h" />
@@ -102,7 +98,6 @@
     <ClCompile Include="SkillSlot.cpp" />
     <ClCompile Include="SoundItem.cpp" />
     <ClCompile Include="SoundServer.cpp" />
-    <ClCompile Include="TestJson.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

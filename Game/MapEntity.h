@@ -13,7 +13,9 @@ public:
 	void Initialize(stage global);
 	void Process();
 	void Render();
+	//アニメーションしているか
 	bool IsPlayAnimation(std::string s);
+	//アニメーションのついたモデル用構造体
 	struct ANIMATIONMODEL
 	{
 		int model;
@@ -44,7 +46,7 @@ protected:
 		int			drawFrame;
 	};
 	std::vector<BLOCKPOS>	mBlockPos;
-	//アニメーション用。時間があれば変更
+	//アニメーション用
 	std::vector<ANIMATIONMODEL> mAnim;
 };
 

@@ -9,14 +9,13 @@ public:
 	static Camera* cameraInstance;
 	void Process(short stix, short stiy);
 	//ゲッター
-	static Camera* GetInstance() { return cameraInstance; }
-	VECTOR GetTarget()	{ return mTarget; }
-	VECTOR GetDir()		{ return mDir; }
-	VECTOR GetPos()		{ return mPos; }
+	static Camera* GetInstance()  { return cameraInstance; }
+	VECTOR GetTarget()		const { return mTarget; }
+	VECTOR GetDir()			const { return mDir; }
+	VECTOR GetPos()			const { return mPos; }
 	//セッター
 	void SetTarget(VECTOR vec) { mTarget = vec; }
 protected:
-	//GameXPad* mPad;
 	//カメラ位置
 	VECTOR mPos;
 	VECTOR mDir;

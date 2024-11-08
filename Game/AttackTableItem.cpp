@@ -1,13 +1,12 @@
 #include "AttackTable.h"
 
-AttackTableItem::AttackTableItem(int ID, bool istrg, bool ischange, bool iscol, bool isse, bool isvoice)
+AttackTableItem::AttackTableItem(int ID, bool istrg, bool ischange, bool iscol)
 {
-	mAttackID		= ID;
-	mIsTrgButton	= istrg;
+	//ˆø”‚©‚çî•ñæ“¾
+	mAttackID = ID;
+	mIsTrgButton = istrg;
 	mIsChangeAttack = ischange;
-	mIsColAttack	= iscol;
-	mIsPlaySE		= isse;
-	mIsPlayVoice	= isvoice;
+	mIsColAttack = iscol;
 }
 
 AttackTableItem::~AttackTableItem()

@@ -2,13 +2,17 @@
 
 ModeFade::ModeFade(bool fade)
 {
+	//フェードタイプ設定
 	_isFade = fade;
+	//時間獲得
 	_nowTime = GetNowCount();
+	//フェードインの場合
 	if (_isFade)
 	{
 		_alphaStart = 255;
 		_alphaEnd = 0;
 	}
+	//フェードアウトの場合
 	else
 	{
 		_alphaStart = 0;
@@ -33,6 +37,7 @@ bool ModeFade::Process()
 {
 	float facter = 6.0f;
 	float time = 60.0f / 60.0f * 1000.0f * facter;
+	//フェードモード以外の処理を停止
 	ModeServer::GetInstance()->SkipProcessUnderLayer();
 	base::Process();
 	_alphaFade = Math::EasingLinear((GetNowCount() - _nowTime), _alphaStart, _alphaEnd, time);
@@ -40,7 +45,6 @@ bool ModeFade::Process()
 	{
 		// このモードを削除予約
 		ModeServer::GetInstance()->Del(this);
-
 	}
 	return true;
 }

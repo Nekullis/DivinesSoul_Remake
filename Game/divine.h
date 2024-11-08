@@ -71,15 +71,14 @@ public:
 	static Divine* _divineInstance;
 	bool Process(VECTOR pos,float roty);
 	bool Render();
-	bool Debug();
 	bool Calcalate(VECTOR pos, float roty);
 	void Invocation(int type, kindDivine skillname);
 	void Reset();
 	//ゲッター
-	static Divine*	GetInstance()		{ return _divineInstance; }
-	bool			GetHitFlag()		{ return mHitFlag; }
-	SKILL			GetSkill(int i)		{ return mSkill[i]; }
-	VECTOR			GetSkillPos(int i)	{ return mSkill[i].vPos; }
+	static Divine*	GetInstance()			  { return _divineInstance; }
+	bool			GetHitFlag()		const { return mHitFlag; }
+	SKILL			GetSkill(int i)		const { return mSkill[i]; }
+	VECTOR			GetSkillPos(int i)  const { return mSkill[i].vPos; }
 	//セッター
 	void	SetHitFlag(bool flag)		{ mHitFlag = flag; }
 protected:					 

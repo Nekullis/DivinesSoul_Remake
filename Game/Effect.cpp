@@ -45,10 +45,6 @@ bool Effect::Process()
 	//角度を変更する
 	SetRotationPlayingEffekseer3DEffect(mPlayEffectHandle, mDir.x, mDir.y, mDir.z);
 	////再生が終わったらフラグをfalseに
-	//if (IsEffekseer3DEffectPlaying(playEffectHandle) == 0)
-	//{ 
-	//	//useFlag = false; 
-	//}
 	return true;
 }
 
@@ -65,11 +61,5 @@ bool Effect::Draw()
 {
 	// Effekseerにより再生中のエフェクトを描画する。
 	DrawEffekseer3D();
-	return true;
-}
-
-bool Effect::Debug()
-{
-	DrawFormatString(100, 0, GetColor(255, 0, 0), "play=%d", IsEffekseer3DEffectPlaying(mPlayEffectHandle));
 	return true;
 }

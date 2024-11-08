@@ -96,6 +96,7 @@ bool Divine::Process(VECTOR pos, float roty)
 		VGet(0,100,-200),
 		VGet(0,0,0),
 		VGet(0,0,-630),
+		//VGet(0,0,0),
 		VGet(0,100,-100),
 		VGet(0,100,-50),
 		VGet(0,0,0)
@@ -184,11 +185,5 @@ bool Divine::Render()
 		}
 	}
 	
-	return true;
-}
-bool Divine::Debug()
-{
-	DrawFormatString(300, 0, GetColor(0, 0, 255), "Cnt =%d", mSkill[3].divineCnt);
-	DrawFormatString(300, 20, GetColor(0, 0, 255), "Cnt =%d", mSkill[4].divineCnt);
 	return true;
 }

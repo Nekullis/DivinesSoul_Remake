@@ -51,8 +51,11 @@ protected:
 	STATUS mStatus;
 	//行動のデータ
 	ACTIONDATA mData;
+	//アニメーション
 	ANIMATION  mAnimation;
+	//旧アニメーション
 	ANIMATION  mOldAnimation;
+	//ダメージカウント
 	int mDamageCnt;
 };
 

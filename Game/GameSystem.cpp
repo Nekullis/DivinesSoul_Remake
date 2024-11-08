@@ -14,10 +14,13 @@ GameSystem::~GameSystem()
 
 void GameSystem::KOProcess(EnemyManager* en, SkillSlot* slot, int lasttrg)
 {
+	//コンボ数取得
 	mKo = en->GetCombo();
+	//コンボ数が規定数に達した
 	if (mKo >= CHANGE_SKILL_COMBO)
 	{
 		mKoSlot = true;
+		//コンボ数リセット
 		en->SetCombo(0);
 	}
 	if (mKoSlot)

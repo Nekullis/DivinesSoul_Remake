@@ -429,6 +429,7 @@ void GameEvent::DrawWave()
 	int cg_wave_slash = gGlobal.mRS->mGetGraph()["wave_slash"]._handle;
 	///Å‘åwave”•`Ê—pƒnƒ“ƒhƒ‹
 	int cg_wave_max = gGlobal.mRS->mGetDivGraph()["wave_number"].handle[MAX_SPAWN_WAVE];
+	//•`‰æ
 	DrawGraph(30, 196, cg_wave, true);
 	DrawGraph(55, 270, cg_wave_num, true);
 	DrawGraph(100, 300, cg_wave_slash, true);
@@ -445,5 +446,4 @@ void GameEvent::Render()
 {
 	//“G‚Ì•`Ê
 	mEnManager->Render();
-
 }
