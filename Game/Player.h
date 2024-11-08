@@ -1,7 +1,6 @@
 #pragma once
 #include "appframe.h"
 #include "Divine.h"
-#include "PlayerParameter.h"
 #include <string>
 #include "MotionTableManager.h"
 #include "AttackTableManager.h"
@@ -39,8 +38,6 @@ public:
 	void Invincible();
 	//ダメージ
 	void Damage(VECTOR pos,int subpoint);
-	//デバッグ
-	void PlDebug();
 	//ゲッター
 	static Player* GetInstance()			 { return mPlInstance; }
 	VECTOR GetMove()				const	 { return mMove; }

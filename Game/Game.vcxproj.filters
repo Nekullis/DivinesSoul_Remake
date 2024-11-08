@@ -96,9 +96,6 @@
     <ClInclude Include="Player.h">
       <Filter>ヘッダー ファイル\Object\Element\Player</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerParameter.h">
-      <Filter>ヘッダー ファイル\Object\Element\Player</Filter>
-    </ClInclude>
     <ClInclude Include="JsonUtility.h">
       <Filter>ヘッダー ファイル\Other</Filter>
     </ClInclude>
@@ -214,9 +211,6 @@
     </ClCompile>
     <ClCompile Include="ApplicationGlobal.cpp">
       <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="TestJson.cpp">
-      <Filter>ソース ファイル\Other</Filter>
     </ClCompile>
     <ClCompile Include="JsonUtility.cpp">
       <Filter>ソース ファイル\Other</Filter>

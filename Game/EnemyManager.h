@@ -17,11 +17,13 @@ public:
 	void Destroy(Enemy* enemy);
 	//ゲッター
 	std::list<Enemy*> GetEnemyList()	{ return mEemyList; }
-	int GetCombo()						{ return mCombo; }
+	int GetCombo()				  const { return mCombo; }
 	//セッター
 	void SetCombo(int i)				{ mCombo = i; }
 private:
+	//敵のリスト
 	std::list<Enemy*> mEemyList;
+	//コンボ
 	float mCombo;
 };
 

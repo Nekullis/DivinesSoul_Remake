@@ -11,6 +11,7 @@ public:
 	void Process();
 	//スキル発動時のインターバルの可視化
 	void IntervalDraw(std::array<kindDivine, 3> slot);
+	//描画
 	void Draw(std::array<kindDivine, 3> slot);
 protected:
 	//プレイヤーHPバー

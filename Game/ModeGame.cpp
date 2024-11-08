@@ -53,6 +53,8 @@ bool ModeGame::Process() {
 			sndItem->Play();
 		}
 	}
+
+	//各オブジェクト更新処理
 	base::Process();
 	mMapEntity->Process();
 	mActionCol->Process(gGlobal.mPM->P_Get(), mEvent->GetEnemyManager());
@@ -62,6 +64,8 @@ bool ModeGame::Process() {
 	mEvent->Process();
 	mSystem->Process(mEvent->GetEnemyManager(),mSlot,gGlobal.mPM->P_GetCommand());
 	mSlot->Process();
+
+	//ゲームがクリアされた場合
 	if (mEvent->GetEvent() >= 1)
 	{
 		if (EN_Romanoff::GetInstance()->GetDeleteFlag())
@@ -74,6 +78,7 @@ bool ModeGame::Process() {
 		}
 	}
 	
+	//プレイヤーの体力が0の場合
 	if (gGlobal.mPM->P_GetDie())
 	{
 		sndItem->Stop();
@@ -87,10 +92,13 @@ bool ModeGame::Process() {
 
 bool ModeGame::Render() {
 	base::Render();
+
 	// 3D基本設定
 	SetUseZBuffer3D(TRUE);
 	SetWriteZBuffer3D(TRUE);
 	SetUseBackCulling(TRUE);
+
+	//オブジェクト描画
 	mMapEntity->Render();
 	gGlobal.mPM->Render();
 	mEvent->Render();

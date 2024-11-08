@@ -242,6 +242,7 @@ void EN_Romanoff::AttackProcess()
 	SoundItemBase* snditem_voice = gGlobal.mSndServer.Get(se_voice);
 	if (Attack())
 	{
+		//_vPos = AttackPos();
 		mIsAttack = true;
 	}
 	else
@@ -321,6 +322,7 @@ void EN_Romanoff::AssaultProcess(VECTOR pl_pos)
 	
 	if (Assult())
 	{
+		//_vPos = AttackPos();
 		mIsAttack = true;
 	}
 	if (mActionCnt < 85 || mActionCnt > 95)

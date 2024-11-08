@@ -17,13 +17,13 @@ class ModeGame : public ModeBase
 {
 	typedef ModeBase base;
 	typedef ApplicationGlobal::stage stage;
-
 public:
 	virtual bool Initialize();
 	virtual bool Terminate();
 	virtual bool Process();
 	virtual bool Render();
 protected:
+	//使う各オブジェクト
 	Camera*				mCam;
 	GameEvent*			mEvent;
 	GameSystem*			mSystem;

@@ -9,8 +9,7 @@ public:
 	void Process();
 	// プレイヤー描画含む、もしデバッグ情報を描画するのであればまとめる
 	void Render(); 
-	void DebugRender();
-	//プレイヤークラスから持ってきた処理を階層を上げてマネージャーから直に使えるようにしている
+	// プレイヤークラスから持ってきた処理を階層を上げてマネージャーから直に使えるようにしている
 	// ゲーム本編に入ってきたとき、プレイヤーを出現させる・それまでに受け取った数値で初期化
 	void P_Materialize(); 
 	void P_Delete();
@@ -21,7 +20,6 @@ public:
 	void P_Damage(VECTOR pos, int subpoint);
 	//ゲッター
 	Player* P_Get() { return mPl; }
-	////////////////////////////////////////
 	VECTOR	P_GetMove()			{ return mPl->GetMove(); }
 	VECTOR	P_GetPos()			{ return mPl->GetPos(); }
 	VECTOR	P_GetDir()			{ return mPl->GetDir(); }
@@ -30,7 +28,6 @@ public:
 	bool	P_GetDie()			{ return mPl->GetGameOver(); }
 	int		P_GetCommand()		{ return mPl->GetLastCommand(); }
 	void	P_SetPos(VECTOR any){ mPl->SetPos(any); }
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 private:
 	Player* mPl;
 };

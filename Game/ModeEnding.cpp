@@ -28,11 +28,6 @@ bool ModeEnding::Process()
         // 次のモードを登録
         ModeServer::GetInstance()->Add(new ModeClear(), 1, "clear");
     }
-    //if (gGlobal._gTrg & PAD_INPUT_3)
-    //{
-    //    //ボタンを押すとポーズ、再生中ではなくなる
-    //    PauseMovieToGraph(_handleMovie);
-    //}
     return true;
 }
 

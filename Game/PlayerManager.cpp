@@ -60,7 +60,3 @@ void PlayerManager::Render() {
 	// プレイヤーの描画以外にもプレイヤーに関するデバッグ情報が欲しかったら描画する
 	mPl->Render();
 }
-
-void PlayerManager::DebugRender() {
-	mPl->PlDebug();
-}

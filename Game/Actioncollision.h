@@ -34,8 +34,6 @@ public:
 	bool DivineColDash		(VECTOR p_s_pos, VECTOR p_e_pos, float p_r, VECTOR e_s_pos, VECTOR e_e_pos, float e_r);
 	bool DivineColVacuum	(VECTOR p_pos, VECTOR p_fvec, VECTOR e_pos, float cos);
 	bool DivineColSonic		(VECTOR p_pos, float p_r, VECTOR e_pos, float e_r);
-	//デバッグ
-	bool Debug(Player* pl);
 protected:
 	//スキルとカプセルの最短距離
 	float mDisDivinetoCap;

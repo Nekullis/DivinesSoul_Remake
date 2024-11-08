@@ -1,4 +1,3 @@
-//#include "appframe.h"
 #include "Player.h"
 #include "ApplicationGlobal.h"
 #include "Camera.h"
@@ -503,30 +502,25 @@ void Player::ActionProcess(VECTOR campos, VECTOR camtarget, SkillSlot* slot)
 	//攻撃時の声とseを再生する
 	if (mAttackManager->GetType() != ATTACK_TYPE::NONE)
 	{
-		if (mAttackManager->GetTable()->GetItem()[attack_cnt].GetIsPlaySE())
+		if (attack_cnt == 1)
 		{
-			//モーションテーブルから再生用のseのキーを取得する
+			//モーションテーブルから再生用の声とseのキーを取得する
+			SoundItemBase* snditem_voice = gGlobal.mSndServer.Get(mAttackManager->GetTable()->GetVoiceName());
 			SoundItemBase* snditem_se = gGlobal.mSndServer.Get(mAttackManager->GetTable()->GetSeName());
 			//音量設定
-			snditem_se->SetVolume(255);
-			// 再生中でないなら
-			if (snditem_se->IsPlay() == false)
-			{
-				// 再生する
-				snditem_se->Play();
-			}
-		}
-		if (mAttackManager->GetTable()->GetItem()[attack_cnt].GetIsPlayVoice())
-		{
-			//モーションテーブルから再生用の声のキーを取得する
-			SoundItemBase* snditem_voice = gGlobal.mSndServer.Get(mAttackManager->GetTable()->GetVoiceName());
-			//音量設定
 			snditem_voice->SetVolume(255);
+			snditem_se->SetVolume(255);
 			// 再生中でないなら
 			if (snditem_voice->IsPlay() == false)
 			{
 				// 再生する
 				snditem_voice->Play();
+			}
+			// 再生中でないなら
+			if (snditem_se->IsPlay() == false)
+			{
+				// 再生する
+				snditem_se->Play();
 			}
 		}
 	}
@@ -630,21 +624,10 @@ void Player::Process(VECTOR campos, VECTOR camtarget, SkillSlot* slot)
 	mAttackManager->Process();
 }
 
-
-
 void Player::Render() 
 {
 	mSkill->Render();
 	// モデルを描画する
 	MV1DrawModel(mModel);
 	MV1DrawModel(mWModel);
-}
-
-
-void Player::PlDebug()
-{
-	clsDx();
-	DrawFormatString(0, 0, GetColor(255, 255, 255), "%d", mInvincibleCnt);
-	DrawCapsule3D(VAdd(mCapsule[0], VGet(0, mRCap, 0)), mCapsule[1], mRCap, 5, GetColor(255, 255, 255), GetColor(255, 255, 255), FALSE);
-	DrawFormatString(0, 100, GetColor(255, 255, 255), "%f,%f,%f", mWPos[0].x, mWPos[0].y, mWPos[0].z);
 }

@@ -33,9 +33,10 @@ bool ApplicationMain::Input() {
 }
 
 bool ApplicationMain::Process() {
-	
+	//‰Šú‰»‚³‚ê‚Ä‚¢‚ê‚Î
 	if (gGlobal.mIsLoad && mInit != nullptr)
 	{
+		//‰Šú‰»•Ï”‚Ìíœ
 		mInit->detach();
 		delete mInit;
 		mInit = nullptr;
