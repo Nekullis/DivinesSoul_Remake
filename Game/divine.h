@@ -29,8 +29,6 @@ public:
 		SLASH,
 		//エクスプロージョン
 		EXPLOSION,
-		//ロックオン
-		//LOCKON,
 		//ダッシュ
 		DASH,
 		//バキューム

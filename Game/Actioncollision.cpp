@@ -42,10 +42,6 @@ bool ActionCollision::MapColPlayer(Player* pl)
 				float sub_len = radius - near_point;
 				//–@ü•ûŒü‚Éã‚Å‹‚ß‚½‹——£‚ðŠ|‚¯‚é
 				VECTOR push_vec = VScale(VNorm(sub_dir), sub_len + 1.0f);
-				if (VSize(pl->GetPos()) != VSize(VAdd(pl->GetPos(), push_vec)))
-				{
-
-				}
 				if (i != 6)
 				{
 					pl->SetPos(VAdd(pl->GetPos(), VGet(push_vec.x, 0, push_vec.z)));
