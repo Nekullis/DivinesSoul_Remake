@@ -1,3 +1,10 @@
+//----------------------------------------------------------------------
+// @filename GameCollision.h
+// @author: Fukuma Kyohei
+// @explanation
+// ゲーム内のオブジェクト判定管理クラス
+// 当たり判定の制御全般を扱うクラス
+//----------------------------------------------------------------------
 #include "Divine.h"
 #include"ApplicationGlobal.h"
 Divine* Divine::_divineInstance = nullptr;
@@ -96,7 +103,6 @@ bool Divine::Process(VECTOR pos, float roty)
 		VGet(0,100,-200),
 		VGet(0,0,0),
 		VGet(0,0,-630),
-		//VGet(0,0,0),
 		VGet(0,100,-100),
 		VGet(0,100,-50),
 		VGet(0,0,0)
@@ -184,6 +190,5 @@ bool Divine::Render()
 			mSkill[i].effect->Draw();
 		}
 	}
-	
 	return true;
 }

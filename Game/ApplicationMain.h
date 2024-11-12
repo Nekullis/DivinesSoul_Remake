@@ -1,3 +1,10 @@
+//----------------------------------------------------------------------
+// @filename ApplicationGlobal.h
+// @author: Fukuma Kyohei
+// @explanation
+// 派生アプリケーションクラス
+// 初期化時のモード登録、その他初めに初期化したいクラスを処理するクラス
+//----------------------------------------------------------------------
 #include "appframe.h"
 #include "ApplicationGlobal.h"
 #include "ModeSound.h"
@@ -18,6 +25,7 @@ public:
 	virtual int DispSizeH() { return 1080; }
 
 protected:
+	//初期化
 	std::thread* mInit;
 };
 

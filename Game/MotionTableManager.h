@@ -1,3 +1,10 @@
+//----------------------------------------------------------------------
+// @filename MotionTableManager.h
+// @author: Fukuma Kyohei
+// @explanation
+// モーション管理クラス
+// モーションの追加、変更を管理するクラス
+//----------------------------------------------------------------------
 #pragma once
 #include "MotionTable.h"
 #include <map>

@@ -1,3 +1,10 @@
+//----------------------------------------------------------------------
+// @filename ResourceServer.h
+// @author: Fukuma Kyohei
+// @explanation
+// リソース管理クラス
+// 外部ファイルでリソースを追加しやすくするためのクラス
+//----------------------------------------------------------------------
 #pragma once
 #include "AppFrame.h"
 #include "JsonUtility.h"
@@ -58,7 +65,6 @@ struct ATTACH_INFO {
 struct EFFECT_INFO {
 	std::string _filepath;
 	Object INFO;
-	// Attribute COMMON; いったん保留
 };
 
 struct DIVGRAPH_INFO {
@@ -92,18 +98,21 @@ public:
 	// Jsonmapから指定の要素を各配列に追加
 	bool Add(const std::string& key);
 
-	// 各配列から指定の要素を削除
-	bool Delete(const std::string& key);
-
 protected:	
 	std::unordered_map<std::string, BASIC_INFO> _mapJsonImport; 
-	std::unordered_map<std::string, BASIC_INFO> _mapAdd;// 個々に追加する要素用のJson配列
-	std::unordered_map<std::string, BASIC_INFO> _mapDel;// 削除するようののJson配列
-	std::unordered_map<std::string, GRAPH_INFO>	_mapGraph; // movieもここにハンドルを入れる
-	std::unordered_map<std::string, DIVGRAPH_INFO>	_mapDivGraph;// divgraphに関しては今回は使う見込みが薄いので後回し（分割の数など）
+	// 個々に追加する要素用のJson配列
+	std::unordered_map<std::string, BASIC_INFO> _mapAdd;
+	// 削除するようののJson配列
+	std::unordered_map<std::string, BASIC_INFO> _mapDel;
+	// movieもここにハンドルを入れる
+	std::unordered_map<std::string, GRAPH_INFO>	_mapGraph; 
+	// divgraphに関しては今回は使う見込みが薄いので後回し（分割の数など）
+	std::unordered_map<std::string, DIVGRAPH_INFO>	_mapDivGraph;
 	
-	std::unordered_map<std::string, MODEL_INFO> _mapModel;  // 一応仮置きの配列→専用のサーバー内で管理するかも
-	std::unordered_map<std::string, EFFECT_INFO> _mapEffect;   // 一応仮置きの配列→専用のサーバー内で管理するかも
+	// 一応仮置きの配列→専用のサーバー内で管理するかも
+	std::unordered_map<std::string, MODEL_INFO> _mapModel;  
+	// 一応仮置きの配列→専用のサーバー内で管理するかも
+	std::unordered_map<std::string, EFFECT_INFO> _mapEffect;  
 	std::unordered_map<std::string, ATTACH_INFO> _mapModelAttach;
 	// 一応仮置きの配列→専用のサーバー内で管理するかも---専用サーバー化した際にはオブジェクトごとに小分けにするー＞_mapModelAttach
 
@@ -132,158 +141,3 @@ public:
 	//template <typename T>
 	//T GetRef(std::string& key, Object TYPE, Reference ELEMENT);
 };
-
-
-
-//
-//template <typename T> // DivGraphはいったん保留
-//T ResourceServer::GetRef(std::string& key, Object TYPE, Reference ELEMENT) {
-//	if (TYPE != Object::NONE) {
-//		if (ELEMENT == Reference::AN || ELEMENT == Reference::AI || ELEMENT == Reference::AT || ELEMENT == Reference::AS) {
-//			return -1;
-//		}
-//		switch (SearchInArray(key, TYPE)) {
-//		case 1: {
-//			auto itr = _mapGraph.find(key);
-//			switch (ELEMENT) {
-//			case RN: {
-//				return key;
-//				break;
-//			}
-//			case RT: {
-//				std::string rType = itr->second.INFO;
-//				return rType;
-//				break;
-//			}
-//			case RH: {
-//				int handle = itr->second._handle;
-//				return handle;
-//				break;
-//			}
-//			case AB: {
-//				Object common = itr->second.COMMON;
-//				return common;
-//				break;
-//			}
-//			}
-//			break;
-//		}
-//		case 2: {
-//			auto itr = _mapDivGraph.find(key);
-//			//switch (ELEMENT) {
-//			//case RN: {
-//			//	return key;
-//			//	break;
-//			//}
-//			//case RT: {
-//			//	std::string rType = itr->second.INFO;
-//			//	return rType;
-//			//	break;
-//			//}
-//			//case RH: {
-//			//	int handle = itr->second._handle;
-//			//	return handle;
-//			//	break;
-//			//}
-//			//case AB: {
-//			//	Object common = itr->second.COMMON;
-//			//	return common;
-//			//	break;
-//			//}
-//			//}
-//			break;
-//		}
-//		case 3: {
-//			auto itr = _mapModel.find(key);
-//			auto attach_itr = _mapModelAttach(key);
-//			switch (ELEMENT) {
-//			case RN: {
-//				return key;
-//				break;
-//			}
-//			case RT: {
-//				std::string rType = itr->second.INFO;
-//				return rType;
-//				break;
-//			}
-//			case RH: {
-//				int handle = itr->second._handle;
-//				return handle;
-//				break;
-//			}
-//			case AB: {
-//				Object common = itr->second.COMMON;
-//				return common;
-//				break;
-//			}
-//			}
-//			break;
-//		}
-//		case 4: {
-//			auto itr = _mapEffect.find(key);
-//			switch (ELEMENT) {
-//			case RN: {
-//				return key;
-//				break;
-//			}
-//			case RT: {
-//				std::string rType = itr->second.INFO;
-//				return rType;
-//				break;
-//			}
-//			case RH: {
-//				std::string filepath = itr->second._filepath;
-//				return filepath;
-//				break;
-//			}
-//			//case AB: {
-//			//	Object common = itr->second.COMMON;
-//			//	return common;
-//			//	break;
-//			//}
-//			}
-//			break;
-//		}
-//		case -1: {
-//			return -1;
-//			break;
-//		}
-//		}
-//	}
-//	else {
-//		if (ELEMENT == Reference::AN && ELEMENT == Reference::AI && ELEMENT == Reference::AT && ELEMENT == Reference::AS) {
-//			return -1;
-//		}
-//		auto itr = _mapModelAttach(key);
-//		switch (ELEMENT) {
-//		case IS: {
-//			if (itr != _mapModelAttach.end()) {
-//				return true;
-//			}
-//			else {
-//				return false;
-//			}
-//			break;
-//		}
-//		case AN: {
-//			return key;
-//			break;
-//		}
-//		case AI: {
-//			int index = itr->second._attach_index;
-//			return  index;
-//			break;
-//		}
-//		case AT: {
-//			float time = itr->second._attach_time;
-//			return time;
-//			break;
-//		}
-//		case AS: {
-//			float speed = itr->second._attach_speed;
-//			return speed;
-//			break;
-//		}		
-//		}
-//	}
-//}

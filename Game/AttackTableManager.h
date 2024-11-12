@@ -1,3 +1,10 @@
+//----------------------------------------------------------------------
+// @filename AttackTableManager.h
+// @author: Fukuma Kyohei
+// @explanation
+// 攻撃情報の管理クラス
+// 攻撃に扱うアイテムの処理に関するクラス
+//----------------------------------------------------------------------
 #pragma once
 #include"MotionTableManager.h"
 #include "AttackTable.h"

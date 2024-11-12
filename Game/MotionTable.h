@@ -1,3 +1,10 @@
+//----------------------------------------------------------------------
+// @filename MotionTable.h
+// @author: Fukuma Kyohei
+// @explanation
+// モーションアイテムクラス
+// 各モーションに使う情報を処理するクラス
+//----------------------------------------------------------------------
 #pragma once
 #include "DxLib.h"
 #include "vector"
@@ -105,6 +112,8 @@ public:
 protected:
 	//コンテナ
 	std::vector<MotionTableItem> mItem;
+	//モーション終わり後の状態
 	MOTION_ENDTYPE mEndType;
+	//モーションレイヤー
 	MOTION_LAYER mLayer;
 };

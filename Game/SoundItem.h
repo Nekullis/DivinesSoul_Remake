@@ -1,3 +1,10 @@
+//----------------------------------------------------------------------
+// @filename SoundItem.h
+// @author: Fukuma Kyohei
+// @explanation
+// 音声用アイテムクラス
+// ModeSoundに使うアイテムの処理クラス
+//----------------------------------------------------------------------
 #pragma once
 #include "appframe.h"
 #include <string>
@@ -70,7 +77,8 @@ public:
 	}
 	virtual TYPE	GetType() { return TYPE::SE; }
 	virtual void	Play() {
-		Stop();		// SEは一度止めてから
+		// SEは一度止めてから
+		Stop();		
 		PlayMem(DX_PLAYTYPE_BACK);
 	}
 };
@@ -84,7 +92,8 @@ public:
 	SoundItemStream(std::string filename) : base(filename) {
 	}
 	virtual ~SoundItemStream() {}
-	virtual bool	IsLoad() { return true; }	// ストリーム再生のものは、ロードされているものとする
+	// ストリーム再生のものは、ロードされているものとする
+	virtual bool	IsLoad() { return true; }	
 protected:
 	void	StreamLoad() {
 		if (_snd == -1) {
@@ -98,7 +107,8 @@ protected:
 	virtual void	Update() {
 		if (_snd != -1) {
 			if (IsPlay() == false) {
-				Unload();		// ストリーム再生のものは、再生していなかったらメモリからアンロードする
+				// ストリーム再生のものは、再生していなかったらメモリからアンロードする
+				Unload();		
 			}
 		}
 	}
@@ -122,8 +132,10 @@ public:
 	}
 	virtual TYPE	GetType() { return TYPE::VOICE; }
 	virtual void	Play() {
-		StreamLoad();	// ストリーム再生のものをロードする
-		if (IsPlay() == false) {	// VOICEは再生されていない場合のみ
+		// ストリーム再生のものをロードする
+		StreamLoad();	
+		// VOICEは再生されていない場合のみ
+		if (IsPlay() == false) {	
 			PlayMem(DX_PLAYTYPE_BACK);
 		}
 	}
@@ -137,7 +149,8 @@ public:
 	}
 	virtual TYPE	GetType() { return TYPE::ONESHOT; }
 	virtual void	Play() {
-		StreamLoad();	// ストリーム再生のものをロードする
+		// ストリーム再生のものをロードする
+		StreamLoad();	
 		PlayMem(DX_PLAYTYPE_BACK);
 	}
 	virtual void	Update();

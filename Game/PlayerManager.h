@@ -1,3 +1,10 @@
+//----------------------------------------------------------------------
+// @filename PlayerManager.h
+// @author: Fukuma Kyohei, Nara Mitsuki
+// @explanation
+// プレイヤー管理クラス
+// プレイヤー処理を安全に上の階層で扱えるようにするクラス
+//----------------------------------------------------------------------
 #pragma once
 #include "Player.h"
 class PlayerManager

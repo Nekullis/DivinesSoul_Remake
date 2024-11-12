@@ -1,3 +1,10 @@
+//----------------------------------------------------------------------
+// @filename SkillSlot.h
+// @author: Fukuma Kyohei, NaraMitsuki
+// @explanation
+// スキルスロット
+// 使用できるスキルを変更させるためのクラス
+//----------------------------------------------------------------------
 #pragma once
 #include "AppFrame.h"
 #include "ResourceServer.h"

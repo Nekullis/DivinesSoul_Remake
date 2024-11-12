@@ -290,9 +290,6 @@
     <ClCompile Include="EN_Romanoff.cpp">
       <Filter>ソース ファイル\Object\Element</Filter>
     </ClCompile>
-    <ClCompile Include="GameSystem.cpp">
-      <Filter>ヘッダー ファイル\Mode</Filter>
-    </ClCompile>
     <ClCompile Include="AttackTable.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -304,6 +301,9 @@
     </ClCompile>
     <ClCompile Include="AttackTableManager.cpp">
       <Filter>ソース ファイル\Object\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSystem.cpp">
+      <Filter>ソース ファイル\Other</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
