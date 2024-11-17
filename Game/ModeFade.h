@@ -2,7 +2,7 @@
 // @filename ModeFade.h
 // @author: Fukuma Kyohei
 // @explanation
-// クリア後の映像を描画するクラス
+// モード間のフェード用のクラス
 //----------------------------------------------------------------------
 #pragma once
 #include "appframe.h"
