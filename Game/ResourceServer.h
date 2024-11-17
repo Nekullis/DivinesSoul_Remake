@@ -1,6 +1,6 @@
 //----------------------------------------------------------------------
 // @filename ResourceServer.h
-// @author: Fukuma Kyohei
+// @author: Nara Mitski
 // @explanation
 // リソース管理クラス
 // 外部ファイルでリソースを追加しやすくするためのクラス

@@ -1,6 +1,6 @@
 //----------------------------------------------------------------------
 // @filename SoundItem.h
-// @author: Fukuma Kyohei
+// @author: Nara Mitsuki, Sato Syunto
 // @explanation
 // 音声用アイテムクラス
 // ModeSoundに使うアイテムの処理クラス

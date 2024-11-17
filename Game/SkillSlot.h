@@ -1,6 +1,6 @@
 //----------------------------------------------------------------------
 // @filename SkillSlot.h
-// @author: Fukuma Kyohei, NaraMitsuki
+// @author: Fukuma Kyohei, Nara Mitsuki
 // @explanation
 // スキルスロット
 // 使用できるスキルを変更させるためのクラス
