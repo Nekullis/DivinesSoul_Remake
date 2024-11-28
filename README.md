@@ -295,6 +295,45 @@ DOVA-SYNDROME
 </pre>
 </details>
 
+# 担当したクラスファイル
+<details>
+<summary>ファイル</summary>
+<pre>
+
+Actioncollision
+AttackTable
+AttackTableItem
+AttackTableManager
+Camera
+divine
+Effect
+EN_Crab
+EN_Osero
+EN_Romanoff
+Enemy
+EnemyManager
+GameEvent
+GameSystem
+gameui
+MapEntity(一部)
+MathCollision
+ModeEnding
+ModeFade
+ModeGame
+ModeGameClear
+ModeGameover
+ModeLoad
+ModeLogo
+ModeTitle
+MotionTable
+MotionTableManager
+Player
+PlayerManager
+SkillSlot
+
+</details>
+
+
 # AppFrame フレームワーク概要
 ゲームを作成する上で定形的に必要となる機能をまとめたフレームワーク  
 Static Library の形式で提供(Project 設定)
